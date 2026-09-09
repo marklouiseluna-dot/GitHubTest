@@ -13,17 +13,17 @@
     <p id="status">Ready</p>
 
     <script>
-    const btn = document.getElementById('btn');
-    const status = document.getElementById('status');
+        const btn = document.getElementById('btn');
+        const status = document.getElementById('status');
 
-    // click
-    btn.addEventListener('click', () => status.textContent = 'Clicked!');
+        // click
+        btn.addEventListener('click', () => status.textContent = 'Clicked!');
 
-    // mouseover
-    btn.addEventListener('mouseover', () => btn.style.background = 'blue');
+        // mouseover
+        btn.addEventListener('mouseover', () => btn.style.background = 'blue');
 
-    // mouseout
-    btn.addEventListener('mouseout', () => btn.style.background = '');
+        // mouseout
+        btn.addEventListener('mouseout', () => btn.style.background = '');
     </script>
 
 
@@ -49,23 +49,59 @@
     <p id="preview"></p>
 
     <script>
-    const form = document.getElementById('form');
-    const name = document.getElementById('name');
+        const form = document.getElementById('form');
+        const name = document.getElementById('name');
 
-    // focus & blur
-    name.addEventListener('focus', () => name.style.border = '2px solid blue');
-    name.addEventListener('blur', () => name.style.border = '');
+        // focus & blur
+        name.addEventListener('focus', () => name.style.border = '2px solid blue');
+        name.addEventListener('blur', () => name.style.border = '');
 
-    // input
-    name.addEventListener('input', function() {
-        document.getElementById('preview').textContent = 'Hello, ' + this.value;
-    });
+        // input
+        name.addEventListener('input', function() {
+            document.getElementById('preview').textContent = 'Hello, ' + this.value;
+        });
 
-    // submit
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Form submitted!');
-    });
+        // submit
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted!');
+        });
     </script>
+
+
+
+
+    <!--WINDOW EVENTS -->
+    <div id="info">
+        <p>Window: <span id="size">-</span></p>
+        <p>Scroll: <span id="scroll">0%</span></p>
+    </div>
+
+    <script>
+        // load
+        window.addEventListener('load', () => {
+            document.getElementById('size').textContent = 'Ready!';
+        });
+
+        // resize
+        window.addEventListener('resize', () => {
+            document.getElementById('size').textContent = 
+                window.innerWidth + 'x' + window.innerHeight;
+        });
+
+        // scroll
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scroll').textContent = Math.round(scrollPercent) + '%';
+        });
+
+        // beforeunload
+        window.addEventListener('unload', (e) => {
+            e.preventDefault();
+            e.returnValue = 'Are you sure you want to leave?';
+        });
+    </script>
+
+
 </body>
 </html>
