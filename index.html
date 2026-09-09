@@ -7,9 +7,65 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <p class="eyebrow">A quiet thought</p>
-        <p class="message">This is a paragraph.</p>
-    </div>
+
+    <!-- MOUSE EVENTS -->
+    <button id="btn">Click Me</button>
+    <p id="status">Ready</p>
+
+    <script>
+    const btn = document.getElementById('btn');
+    const status = document.getElementById('status');
+
+    // click
+    btn.addEventListener('click', () => status.textContent = 'Clicked!');
+
+    // mouseover
+    btn.addEventListener('mouseover', () => btn.style.background = 'blue');
+
+    // mouseout
+    btn.addEventListener('mouseout', () => btn.style.background = '');
+    </script>
+
+
+
+
+    <!-- KEYBOARD EVENTS -->
+    <input type="text" id="input" placeholder="Type something...">
+    <p id="display">Key:</p>
+
+    <script>
+        document.getElementById('input').addEventListener('keydown', function(e) {
+            document.getElementById('display').textContent = 'Key: ' + e.key;
+        });
+    </script>
+
+
+
+    <!-- FORM EVENTS -->
+    <form id="form">
+        <input type="text" id="name" placeholder="Your name">
+        <button type="submit">Submit</button>
+    </form>
+    <p id="preview"></p>
+
+    <script>
+    const form = document.getElementById('form');
+    const name = document.getElementById('name');
+
+    // focus & blur
+    name.addEventListener('focus', () => name.style.border = '2px solid blue');
+    name.addEventListener('blur', () => name.style.border = '');
+
+    // input
+    name.addEventListener('input', function() {
+        document.getElementById('preview').textContent = 'Hello, ' + this.value;
+    });
+
+    // submit
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Form submitted!');
+    });
+    </script>
 </body>
 </html>
